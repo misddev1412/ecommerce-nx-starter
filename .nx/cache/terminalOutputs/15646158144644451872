@@ -1,0 +1,140 @@
+> webpack-cli build node-env=production
+
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 37.9 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/app/app.controller.ts[39m[22m [1m[32m8:27-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './database.service' in '/Users/user/projects/thinh/ecommerce-nx-starter/backend/src/app'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/database/database.service.ts[39m[22m [1m[32m10:22-55[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './entities/user.entity' in '/Users/user/projects/thinh/ecommerce-nx-starter/backend/src/modules/database'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/app/app.controller.ts:[32m[1m3:33[22m[39m[1m[39m[22m
+[90mTS2307: [39mCannot find module './database.service' or its corresponding type declarations.
+  [0m [90m 1 |[39m [36mimport[39m { [33mController[39m[33m,[39m [33mGet[39m } [36mfrom[39m [32m'@nestjs/common'[39m[33m;[39m
+   [90m 2 |[39m [36mimport[39m { [33mAppService[39m } [36mfrom[39m [32m'./app.service'[39m[33m;[39m
+  [31m[1m>[22m[39m[90m 3 |[39m [36mimport[39m { [33mDatabaseService[39m } [36mfrom[39m [32m'./database.service'[39m[33m;[39m
+   [90m   |[39m                                 [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 4 |[39m
+   [90m 5 |[39m [33m@[39m[33mController[39m()
+   [90m 6 |[39m [36mexport[39m [36mclass[39m [33mAppController[39m {[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m40:55[22m[39m[1m[39m[22m
+[90mTS2551: [39mProperty 'verifyToken' does not exist on type 'FirebaseService'. Did you mean 'verifyIdToken'?
+  [0m [90m 38 |[39m     [36mtry[39m {
+   [90m 39 |[39m       [90m// Verify Firebase token[39m
+  [31m[1m>[22m[39m[90m 40 |[39m       [36mconst[39m decodedToken [33m=[39m [36mawait[39m [36mthis[39m[33m.[39mfirebaseService[33m.[39mverifyToken(firebaseToken)[33m;[39m
+   [90m    |[39m                                                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 41 |[39m       
+   [90m 42 |[39m       [36mif[39m ([33m![39mdecodedToken[33m.[39mfirebase[33m.[39msign_in_provider [33m===[39m [32m'google.com'[39m) {
+   [90m 43 |[39m         [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m([32m'Invalid provider. Expected Google.'[39m)[33m;[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m42:11[22m[39m[1m[39m[22m
+[90mTS2367: [39mThis comparison appears to be unintentional because the types 'boolean' and 'string' have no overlap.
+  [0m [90m 40 |[39m       [36mconst[39m decodedToken [33m=[39m [36mawait[39m [36mthis[39m[33m.[39mfirebaseService[33m.[39mverifyToken(firebaseToken)[33m;[39m
+   [90m 41 |[39m       
+  [31m[1m>[22m[39m[90m 42 |[39m       [36mif[39m ([33m![39mdecodedToken[33m.[39mfirebase[33m.[39msign_in_provider [33m===[39m [32m'google.com'[39m) {
+   [90m    |[39m           [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 43 |[39m         [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m([32m'Invalid provider. Expected Google.'[39m)[33m;[39m
+   [90m 44 |[39m       }
+   [90m 45 |[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m72:27[22m[39m[1m[39m[22m
+[90mTS2339: [39mProperty 'firebaseUid' does not exist on type 'User'.
+  [0m [90m 70 |[39m         sub[33m:[39m user[33m.[39mid[33m,[39m
+   [90m 71 |[39m         email[33m:[39m user[33m.[39memail[33m,[39m
+  [31m[1m>[22m[39m[90m 72 |[39m         firebaseUid[33m:[39m user[33m.[39mfirebaseUid[33m,[39m
+   [90m    |[39m                           [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 73 |[39m         provider[33m:[39m user[33m.[39mprovider[33m,[39m
+   [90m 74 |[39m       }[33m;[39m
+   [90m 75 |[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m73:24[22m[39m[1m[39m[22m
+[90mTS2339: [39mProperty 'provider' does not exist on type 'User'.
+  [0m [90m 71 |[39m         email[33m:[39m user[33m.[39memail[33m,[39m
+   [90m 72 |[39m         firebaseUid[33m:[39m user[33m.[39mfirebaseUid[33m,[39m
+  [31m[1m>[22m[39m[90m 73 |[39m         provider[33m:[39m user[33m.[39mprovider[33m,[39m
+   [90m    |[39m                        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 74 |[39m       }[33m;[39m
+   [90m 75 |[39m
+   [90m 76 |[39m       [36mconst[39m accessToken [33m=[39m [36mthis[39m[33m.[39mjwtService[33m.[39msign(payload)[33m;[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m96:55[22m[39m[1m[39m[22m
+[90mTS2551: [39mProperty 'verifyToken' does not exist on type 'FirebaseService'. Did you mean 'verifyIdToken'?
+  [0m [90m 94 |[39m     [36mtry[39m {
+   [90m 95 |[39m       [90m// Verify Firebase token[39m
+  [31m[1m>[22m[39m[90m 96 |[39m       [36mconst[39m decodedToken [33m=[39m [36mawait[39m [36mthis[39m[33m.[39mfirebaseService[33m.[39mverifyToken(firebaseToken)[33m;[39m
+   [90m    |[39m                                                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 97 |[39m       
+   [90m 98 |[39m       [36mif[39m ([33m![39mdecodedToken[33m.[39mfirebase[33m.[39msign_in_provider [33m===[39m [32m'facebook.com'[39m) {
+   [90m 99 |[39m         [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m([32m'Invalid provider. Expected Facebook.'[39m)[33m;[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m98:11[22m[39m[1m[39m[22m
+[90mTS2367: [39mThis comparison appears to be unintentional because the types 'boolean' and 'string' have no overlap.
+  [0m [90m  96 |[39m       [36mconst[39m decodedToken [33m=[39m [36mawait[39m [36mthis[39m[33m.[39mfirebaseService[33m.[39mverifyToken(firebaseToken)[33m;[39m
+   [90m  97 |[39m       
+  [31m[1m>[22m[39m[90m  98 |[39m       [36mif[39m ([33m![39mdecodedToken[33m.[39mfirebase[33m.[39msign_in_provider [33m===[39m [32m'facebook.com'[39m) {
+   [90m     |[39m           [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m  99 |[39m         [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m([32m'Invalid provider. Expected Facebook.'[39m)[33m;[39m
+   [90m 100 |[39m       }
+   [90m 101 |[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m128:27[22m[39m[1m[39m[22m
+[90mTS2339: [39mProperty 'firebaseUid' does not exist on type 'User'.
+  [0m [90m 126 |[39m         sub[33m:[39m user[33m.[39mid[33m,[39m
+   [90m 127 |[39m         email[33m:[39m user[33m.[39memail[33m,[39m
+  [31m[1m>[22m[39m[90m 128 |[39m         firebaseUid[33m:[39m user[33m.[39mfirebaseUid[33m,[39m
+   [90m     |[39m                           [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 129 |[39m         provider[33m:[39m user[33m.[39mprovider[33m,[39m
+   [90m 130 |[39m       }[33m;[39m
+   [90m 131 |[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m129:24[22m[39m[1m[39m[22m
+[90mTS2339: [39mProperty 'provider' does not exist on type 'User'.
+  [0m [90m 127 |[39m         email[33m:[39m user[33m.[39memail[33m,[39m
+   [90m 128 |[39m         firebaseUid[33m:[39m user[33m.[39mfirebaseUid[33m,[39m
+  [31m[1m>[22m[39m[90m 129 |[39m         provider[33m:[39m user[33m.[39mprovider[33m,[39m
+   [90m     |[39m                        [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 130 |[39m       }[33m;[39m
+   [90m 131 |[39m
+   [90m 132 |[39m       [36mconst[39m accessToken [33m=[39m [36mthis[39m[33m.[39mjwtService[33m.[39msign(payload)[33m;[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/auth/auth.service.ts:[32m[1m182:62[22m[39m[1m[39m[22m
+[90mTS2339: [39mProperty 'firebaseUid' does not exist on type 'User'.
+  [0m [90m 180 |[39m   [36masync[39m generateCustomToken(userId[33m:[39m string)[33m:[39m [33mPromise[39m[33m<[39m[33mstring[39m[33m>[39m {
+   [90m 181 |[39m     [36mconst[39m user [33m=[39m [36mawait[39m [36mthis[39m[33m.[39muserService[33m.[39mfindById(userId)[33m;[39m
+  [31m[1m>[22m[39m[90m 182 |[39m     [36mreturn[39m [36mawait[39m [36mthis[39m[33m.[39mfirebaseService[33m.[39mcreateCustomToken(user[33m.[39mfirebaseUid)[33m;[39m
+   [90m     |[39m                                                              [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 183 |[39m   }
+   [90m 184 |[39m } [0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/database/database.service.ts:[32m[1m4:22[22m[39m[1m[39m[22m
+[90mTS2307: [39mCannot find module './entities/user.entity' or its corresponding type declarations.
+  [0m [90m 2 |[39m [36mimport[39m { [33mInjectRepository[39m } [36mfrom[39m [32m'@nestjs/typeorm'[39m[33m;[39m
+   [90m 3 |[39m [36mimport[39m { [33mRepository[39m } [36mfrom[39m [32m'typeorm'[39m[33m;[39m
+  [31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { [33mUser[39m } [36mfrom[39m [32m'./entities/user.entity'[39m[33m;[39m
+   [90m   |[39m                      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 5 |[39m
+   [90m 6 |[39m [33m@[39m[33mInjectable[39m()
+   [90m 7 |[39m [36mexport[39m [36mclass[39m [33mDatabaseService[39m {[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/user/user.service.ts:[32m[1m51:57[22m[39m[1m[39m[22m
+[90mTS2353: [39mObject literal may only specify known properties, and 'firebaseUid' does not exist in type 'FindOptionsWhere<User> | FindOptionsWhere<User>[]'.
+  [0m [90m 49 |[39m [90m   */[39m
+   [90m 50 |[39m   [36masync[39m findByFirebaseUid(firebaseUid[33m:[39m string)[33m:[39m [33mPromise[39m[33m<[39m[33mUser[39m [33m|[39m [36mnull[39m[33m>[39m {
+  [31m[1m>[22m[39m[90m 51 |[39m     [36mreturn[39m [36mawait[39m [36mthis[39m[33m.[39muserRepository[33m.[39mfindOne({ where[33m:[39m { firebaseUid } })[33m;[39m
+   [90m    |[39m                                                         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 52 |[39m   }
+   [90m 53 |[39m
+   [90m 54 |[39m   [90m/**[39m[0m
+
+[1m[31mERROR[39m[22m in [1m./src/modules/user/user.service.ts:[32m[1m87:63[22m[39m[1m[39m[22m
+[90mTS2353: [39mObject literal may only specify known properties, and 'firebaseUid' does not exist in type 'FindOptionsWhere<User> | FindOptionsWhere<User>[]'.
+  [0m [90m 85 |[39m     updateData[33m:[39m [33mUpdateUserData[39m
+   [90m 86 |[39m   )[33m:[39m [33mPromise[39m[33m<[39m[33mUser[39m[33m>[39m {
+  [31m[1m>[22m[39m[90m 87 |[39m     [36mconst[39m user [33m=[39m [36mawait[39m [36mthis[39m[33m.[39muserRepository[33m.[39mfindOne({ where[33m:[39m { firebaseUid } })[33m;[39m
+   [90m    |[39m                                                               [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+   [90m 88 |[39m     [36mif[39m ([33m![39muser) {
+   [90m 89 |[39m       [36mthrow[39m [36mnew[39m [33mNotFoundException[39m([32m`User with Firebase UID ${firebaseUid} not found`[39m)[33m;[39m
+   [90m 90 |[39m     }[0m
+
+webpack compiled with [1m[31m15 errors[39m[22m (7873f5ac7f3ea412)

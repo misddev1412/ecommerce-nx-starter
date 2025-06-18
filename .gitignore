@@ -134,3 +134,45 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Added by Task Master AI
+dev-debug.log
+# Environment variables
+# Cursor MCP configuration with API keys
+.cursor/mcp.json
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+.DS_Store
+# Nuxt dev/build outputs
+.output
+.data
+.nitro
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+
+# Added by Task Master AI
+dev-debug.log
+# Environment variables
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+.DS_Store
+# Nuxt dev/build outputs
+.output
+.data
+.nitro
+vite.config.*.timestamp*
+vitest.config.*.timestamp*

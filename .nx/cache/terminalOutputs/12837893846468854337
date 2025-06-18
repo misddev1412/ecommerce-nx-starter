@@ -1,0 +1,6 @@
+> nx run utils:build
+
+Compiling TypeScript files for project "utils"...
+Done compiling TypeScript files for project "utils".
+
+[2m../../dist/libs/utils/README.md[22m

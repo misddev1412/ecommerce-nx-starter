@@ -1,0 +1,212 @@
+<context>
+# Overview  
+This is a multi-tenant SaaS e-commerce platform that includes:  
+- **Admin Panel**: for managing products, orders, users, and configuration.  
+- **Frontend Site**: customer-facing storefront with full shopping experience.  
+- **Backend Service**: core logic and data handling with a clean architectural design.  
+- **External API**: webhook-ready interface for third-party integrations.  
+- **Cron Service**: handles scheduled tasks like email queueing and data sync.  
+
+The platform enables:
+- Guest and logged-in cart management with sync upon login
+- Product variant selection and flexible order flow
+- Multiple product types: physical goods, digital products (e-vouchers, tickets), and subscriptions
+- Multi-language and multi-currency support
+- Authentication via Firebase (Google, Facebook, etc.)
+
+# Core Features  
+- **Product Variants**  
+  - Allows users to select different variations (e.g., size, color)
+  - Essential for real-world commerce flexibility  
+  - Backend handles stock and logic; frontend reflects options in UI  
+
+- **Cart and Checkout System**  
+  - Guest and user cart merging  
+  - Supports different shipping and payment methods  
+  - Secure and simple user experience  
+
+- **Customizable Admin Interface**  
+  - Admin can configure homepage layout, banners, section titles, and color schemes  
+  - Dynamic configuration loaded from database  
+
+- **User & Role Management**  
+  - Role-based permission system  
+  - Admin can invite, assign roles, and audit access  
+
+- **Order & Product Management**  
+  - Create/edit orders manually or through frontend  
+  - Product CRUD with variant, pricing, media, stock  
+
+- **Content & Notification System**  
+  - Blog post publishing  
+  - Email templates and queue management  
+  - Notification channels configurable (email, SMS, Zalo, Telegram, etc.)  
+
+- **Multi-language Support**  
+  - Static content via i18n `.json`  
+  - Dynamic content via database fallback  
+  - Locale detection via headers  
+
+# User Experience  
+- **User Personas**  
+  - Shopper: Browses products, purchases, tracks orders  
+  - Admin: Manages catalog, users, analytics  
+  - Guest: Temporary cart and browsing  
+
+- **Key User Flows**  
+  - Browsing → Add to Cart → Checkout → Order Tracking  
+  - Admin Dashboard → Product Setup → Order Fulfillment → Configuration  
+
+- **UI/UX Considerations**  
+  - Tailwind CSS for styling  
+  - Shared color themes between admin and frontend  
+  - Nuxt 3 for SSR and SEO readiness  
+  - Shared components with override capacity  
+  - Full error page support: 403, 404, 500 with stacktrace in dev  
+</context>
+
+<PRD>
+# Technical Architecture  
+- **System Components**  
+  - `apps/backend`: NestJS + TRPC, TypeORM, modular structure  
+  - `apps/frontend`: Nuxt 3 SSR, uses shared components and color themes  
+  - `apps/admin`: Nuxt 3 SSR, similar setup to frontend but admin-focused  
+  - `apps/api`: lightweight NestJS app to handle incoming webhooks  
+  - `apps/cron`: NestJS app for scheduled background jobs  
+  - **All packages and apps managed with Yarn (monorepo workspace)**  
+
+- **Backend Architecture & Folder Structure**  
+  - **Modular NestJS Structure**: Following domain-driven design principles  
+  - **Module Organization**:  
+    - `src/modules/auth/`: Authentication logic, guards, strategies, JWT handling  
+      - `auth.controller.ts`: Google/Facebook OAuth endpoints  
+      - `auth.service.ts`: Login logic, JWT token generation  
+      - `firebase.service.ts`: Firebase token verification, user management  
+      - `guards/jwt-auth.guard.ts`: Route protection  
+      - `strategies/jwt.strategy.ts`: Passport JWT strategy  
+      - `index.ts`: Barrel exports  
+    - `src/modules/user/`: User management, profiles, roles  
+      - `user.controller.ts`: User CRUD endpoints  
+      - `user.service.ts`: User business logic  
+      - `index.ts`: Barrel exports  
+    - `src/modules/database/`: Database connection, base repositories  
+      - `database.service.ts`: Database utilities  
+      - `database.module.ts`: Database module configuration  
+      - `index.ts`: Barrel exports  
+    - `src/modules/product/`: Product CRUD, variants, inventory  
+    - `src/modules/order/`: Order processing, cart management  
+    - `src/shared/`: Common entities, DTOs, interfaces, utilities  
+      - `entities/user.entity.ts`: User entity with Firebase integration  
+      - `entities/index.ts`: Entity barrel exports  
+    - `src/common/`: Shared decorators, filters, interceptors  
+    - `src/config/`: Configuration files  
+      - `typeorm.config.ts`: Database configuration  
+    - `migrations/`: Database migration files  
+      - `1750148657559-CreateUserTable.ts`: Initial user table  
+      - `1750152240477-AddFirebaseFieldsToUser.ts`: Firebase integration fields  
+  - **Clean Separation**: Controllers, services, entities organized by domain  
+  - **Barrel Exports**: Proper index.ts files for clean imports  
+  - **Scalable Structure**: Easy to add new modules and features  
+
+- **Data Models**  
+  - All entities use UUID as primary key  
+  - Base fields for all models: `id`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`, `created_from`  
+  - Authentication: `users`, `user_profiles`  
+  - RBAC: `roles`, `permissions`, `user_roles`, `user_permissions`, `role_permissions`  
+
+- **Shared Resources**  
+  - `libs/shared`: Common types/interfaces  
+  - `libs/utils`: Reusable utility functions (backend only)  
+  - Shared composables and stores for both Nuxt apps  
+  - SCSS files instead of inline style  
+  - Aliases like `@base`, `@shared`, etc.  
+
+- **API & Integrations**  
+  - Firebase for auth (Gmail, Facebook)  
+  - TRPC between frontend/admin and backend  
+  - JWT for authentication  
+  - Internationalization via i18n and DB  
+
+- **Infrastructure Requirements**  
+  - PostgreSQL as main database  
+  - .env config used across all apps  
+  - Migrations handled via CLI (`yarn run:migrations`)  
+  - Yarn is the package manager of choice across all services  
+
+# Development Roadmap  
+## Phase 1: MVP  
+- Setup NX monorepo and five apps  
+- Refactor backend folder structure  
+- Auth flow with Firebase login  
+- Database schema and migrations  
+- Basic admin panel UI with authentication  
+- Product & Variant CRUD (admin)  
+- Cart system with guest → user merge  
+- Checkout flow with order creation  
+- Basic dashboard, blog, notification setup  
+- Base layout + color config from DB  
+
+## Phase 2: Enhancements  
+- Multi-language dynamic loader  
+- Custom homepage builder (layout editor)  
+- Role permission matrix management  
+- Extended notification channels (SMS, Zalo, Telegram)  
+- Advanced filtering/searching  
+- Order reports and analytics  
+- Marketing tools: coupons, campaigns  
+- User email/SMS templates and logs  
+- Subscription product support  
+
+# Logical Dependency Chain  
+1. Set up NX workspace and shared libraries  
+2. Setup PostgreSQL, TypeORM, migrations  
+3. Setup Firebase authentication  
+4. Refactor backend folder structure for maintainability  
+5. Build backend TRPC modules: auth, products, orders  
+6. Develop admin interface with CRUD  
+7. Build frontend with shopping & checkout  
+8. Integrate TRPC between frontend/admin and backend  
+9. Setup cron for background tasks  
+10. External webhook API with JWT-secured endpoints  
+11. Add i18n, dynamic settings, and customization  
+
+# Risks and Mitigations  
+- **Technical Complexity**  
+  - Use design patterns (repository, service, base class) to ensure maintainability  
+  - **Proper folder structure** to prevent code organization issues  
+
+- **MVP Scope Uncertainty**  
+  - Phase-based planning, atomic feature blocks  
+
+- **Resource Bottlenecks**  
+  - Shared libraries to maximize reusability  
+  - Enforce conventions for faster onboarding  
+  - **Clean modular architecture** for easier team collaboration  
+
+- **Frontend Performance**  
+  - Server-side rendering via Nuxt 3  
+  - Tailwind + SCSS extraction for styling  
+
+# Appendix  
+- **Design Patterns**  
+  - Repository pattern for data access  
+  - Service layer for business logic  
+  - **Modular NestJS backend with domain isolation**  
+  - Enum-based status/type definition  
+  - **Clean folder structure following NestJS best practices**  
+
+- **Commenting & Naming Conventions**  
+  - English only for code, comments, variables  
+  - Strongly typed interfaces  
+  - No logic inside `.vue` files; use composables  
+  - No SCSS in Vue; use external SCSS files  
+  - **Consistent module naming and organization**  
+
+- **Other Notes**  
+  - Admin can:  
+    - View and manage carts, orders, products  
+    - Configure UI (colors, banners, sections)  
+    - Manage users, roles, email templates  
+    - Publish blog content  
+    - View dashboard analytics
+</PRD>
