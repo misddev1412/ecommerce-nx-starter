@@ -176,3 +176,5 @@ dev-debug.log
 .nitro
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
+
+.nx/
