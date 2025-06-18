@@ -1,14 +1,0 @@
-> webpack-cli build node-env=production
-
-chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 51.9 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
-
-[1m[31mERROR[39m[22m in [1m./src/trpc/trpc.controller.ts:[32m[1m28:12[22m[39m[1m[39m[22m
-[90mTS2554: [39mExpected 3 arguments, but got 2.
-  [0m [90m 26 |[39m     })[33m;[39m
-   [90m 27 |[39m
-  [31m[1m>[22m[39m[90m 28 |[39m     [36mreturn[39m trpcHandler(req[33m,[39m res)[33m;[39m
-   [90m    |[39m            [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-   [90m 29 |[39m   }
-   [90m 30 |[39m } [0m
-
-webpack compiled with [1m[31m1 error[39m[22m (b029aa2e49ef0198)

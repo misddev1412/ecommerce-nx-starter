@@ -1,6 +1,0 @@
-> nx run shared:build
-
-Compiling TypeScript files for project "shared"...
-Done compiling TypeScript files for project "shared".
-
-[2m../dist/shared/README.md[22m
